@@ -1,9 +1,9 @@
 import org.alexcawl.forecaster.plugins.core.moduleNamespace
 
 plugins {
-    id("module.application.plugin")
+    id("module.feature.plugin")
 }
 
 android {
-    namespace = moduleNamespace()
+    namespace = moduleNamespace("feature")
 }

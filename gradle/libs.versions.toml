@@ -1,28 +1,67 @@
 [versions]
+
+# [Libraries versions]
 agp = "8.5.0"
 kotlin = "1.9.0"
-coreKtx = "1.13.1"
-junit = "4.13.2"
-junitVersion = "1.2.1"
-espressoCore = "3.6.1"
-appcompat = "1.7.0"
-material = "1.12.0"
-constraintlayout = "2.1.4"
-navigationFragmentKtx = "2.8.2"
-navigationUiKtx = "2.8.2"
+ksp = "1.9.0-1.0.12"
+serialization = "1.7.1"
+ktor = "1.5.0"
+dagger = "2.48.1"
+room = "2.6.1"
+
+# [Build configuration]
+applicationId = "org.alexcawl.forecaster"
+compileSdk = "34"
+minSdk = "24"
+javaVersion = "17"
+jvmTarget = "17"
 
 [libraries]
-androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
-androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
-androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
+
+# [Kotlin]
+kotlin-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlin" }
+kotlin-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlin" }
+kotlin-serialization-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-core", version.ref = "serialization" }
+kotlin-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serialization" }
+
+# [Dagger]
+dagger-core = { group = "com.google.dagger", name = "dagger", version.ref = "dagger" }
+dagger-compiler = { group = "com.google.dagger", name = "dagger-compiler", version.ref = "dagger" }
+
+# [Android]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.13.1" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version = "1.7.0" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version = "2.1.4" }
+androidx-splash = { group = "androidx.core", name = "core-splashscreen", version = "1.0.1"}
+material = { group = "com.google.android.material", name = "material", version = "1.12.0" }
+
+# [Testing]
+junit = { group = "junit", name = "junit", version = "4.13.2" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version = "1.2.1" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version = "3.6.1" }
+
+# [Ktor]
+ktor-client = { group = "io.ktor", name = "ktor-client-android", version.ref = "ktor" }
+ktor-serialization = { group = "io.ktor", name = "ktor-client-serialization", version.ref = "ktor" }
+
+# [Persistence]
+room-core = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+room-kotlin = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+preferences = { group = "androidx.datastore", name = "datastore-preferences", version = "1.1.1" }
+
+# [Precompiled plugins]
+plugin-android-build-gradle = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+plugin-android-gradle = { module = "com.android.application:com.android.application.gradle.plugin", version.ref = "agp" }
+plugin-kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+plugin-kotlin-serialization-gradle = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
+plugin-ksp-gradle = { module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 
 [plugins]
-android-gradle = { id = "com.android.application", version.ref = "agp" }
-kotlin-gradle = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 
+# [Plugins references]
+android-application-gradle = { id = "com.android.application", version.ref = "agp" }
+android-library-gradle = { id = "com.android.library", version.ref = "agp" }
+kotlin-android-gradle = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-serialization-gradle = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+ksp-gradle = { id = "com.google.devtools.ksp", version.ref = "ksp" }

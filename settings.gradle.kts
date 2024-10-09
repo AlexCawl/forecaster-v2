@@ -1,6 +1,7 @@
 @file:Suppress("UnstableApiUsage")
 
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google {
             content {
@@ -13,6 +14,7 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -21,5 +23,26 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "forecaster"
-include(":app")
+with(rootProject) {
+    name = "forecaster"
+}
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
+// [Applications]
+include(
+    ":app",
+)
+
+// [Core]
+include(
+    ":core:common",
+    ":core:ui",
+    ":core:network",
+    ":core:persistence",
+)
+
+// [Features]
+include(
+    ":feature",
+)
