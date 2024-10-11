@@ -1,17 +1,36 @@
 package org.alexcawl.forecaster
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import org.alexcawl.forecaster.app.R
 import org.alexcawl.forecaster.app.databinding.ActivityMainBinding
+import org.alexcawl.forecaster.core.ui.mvi.BaseActivity
+import org.alexcawl.forecaster.core.ui.mvi.BaseViewModel
+import org.alexcawl.forecaster.core.ui.mvi.ViewModelConfiguration
+import org.alexcawl.forecaster.core.ui.utils.viewBinding
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+class MainActivity : BaseActivity<Unit, Unit, ActivityMainBinding>(R.layout.activity_main) {
+    override val viewModel: BaseViewModel<Unit, Unit>
+        get() = object : BaseViewModel<Unit, Unit>(
+            configuration = object : ViewModelConfiguration {
+                override val intentScope: CoroutineScope
+                    get() = CoroutineScope(Dispatchers.Main)
+                override val intentDispatcher: CoroutineDispatcher
+                    get() = Dispatchers.Main
+            },
+            initialState = Unit
+        ) {
+            override fun handle(action: Unit) {
+                println(Unit)
+            }
+        }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override val binding: ActivityMainBinding by viewBinding {
+        ActivityMainBinding.inflate(layoutInflater)
+    }
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
+    override fun renderState(state: Unit) {
+        println("Hello world")
     }
 }

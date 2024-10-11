@@ -27,8 +27,6 @@ with(rootProject) {
     name = "forecaster"
 }
 
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-
 // [Applications]
 include(
     ":app",
@@ -44,5 +42,5 @@ include(
 
 // [Features]
 include(
-    ":feature",
+    ":feature:settings",
 )

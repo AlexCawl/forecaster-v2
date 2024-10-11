@@ -8,6 +8,7 @@ serialization = "1.7.1"
 ktor = "1.5.0"
 dagger = "2.48.1"
 room = "2.6.1"
+lifecycle = "2.8.6"
 
 # [Build configuration]
 applicationId = "org.alexcawl.forecaster"
@@ -32,8 +33,12 @@ dagger-compiler = { group = "com.google.dagger", name = "dagger-compiler", versi
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.13.1" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version = "1.7.0" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version = "2.1.4" }
-androidx-splash = { group = "androidx.core", name = "core-splashscreen", version = "1.0.1"}
+androidx-splash = { group = "androidx.core", name = "core-splashscreen", version = "1.0.1" }
 material = { group = "com.google.android.material", name = "material", version = "1.12.0" }
+androidx-lifecycle-core = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-extensions = { group = "androidx.lifecycle", name = "lifecycle-extensions", version = "2.2.0" }
+androidx-fragment = { group = "androidx.fragment", name = "fragment-ktx", version = "1.8.4" }
 
 # [Testing]
 junit = { group = "junit", name = "junit", version = "4.13.2" }

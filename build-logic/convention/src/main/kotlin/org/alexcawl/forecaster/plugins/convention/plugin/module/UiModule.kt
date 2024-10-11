@@ -16,6 +16,10 @@ class UiModule : Plugin<Project> {
             }
             with(dependencies) {
                 implementation(libs.androidx.core.ktx)
+                implementation(libs.androidx.lifecycle.core)
+                implementation(libs.androidx.lifecycle.viewmodel)
+                implementation(libs.androidx.lifecycle.extensions)
+                implementation(libs.androidx.fragment)
                 implementation(libs.androidx.appcompat)
                 implementation(libs.androidx.constraintlayout)
                 implementation(libs.material)
