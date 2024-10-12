@@ -18,7 +18,7 @@ class MainScreenViewModel @Inject constructor(
             delay(3000)
             task {
                 reduce {
-                    MainScreenState.WeatherScreenDisplayed
+                    MainScreenState.SettingsScreenDisplayed
                 }
             }
         }

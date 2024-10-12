@@ -9,7 +9,7 @@ abstract class ItemDelegateAdapter<I, in VH : RecyclerView.ViewHolder>(
     abstract fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder
 
     abstract fun onBindViewHolder(
-        model: I,
+        item: I,
         viewHolder: VH
     )
 
