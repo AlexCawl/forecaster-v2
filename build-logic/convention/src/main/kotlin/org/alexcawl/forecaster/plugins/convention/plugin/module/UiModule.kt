@@ -22,6 +22,7 @@ class UiModule : Plugin<Project> {
                 implementation(libs.androidx.fragment)
                 implementation(libs.androidx.appcompat)
                 implementation(libs.androidx.constraintlayout)
+                implementation(libs.androidx.splash)
                 implementation(libs.material)
             }
             androidConfiguration<AndroidExtensions> {
