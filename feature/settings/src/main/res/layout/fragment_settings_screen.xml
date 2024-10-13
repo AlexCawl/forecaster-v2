@@ -18,6 +18,7 @@
 
         <ImageButton
             android:id="@+id/backButton"
+            style="@style/Widget.Material3.Button.IconButton"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:contentDescription="@string/back"

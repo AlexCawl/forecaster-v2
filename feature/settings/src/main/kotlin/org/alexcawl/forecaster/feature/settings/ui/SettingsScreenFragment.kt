@@ -9,8 +9,10 @@ import org.alexcawl.forecaster.core.ui.delegate.BaseDelegateAdapter
 import org.alexcawl.forecaster.core.ui.mvi.BaseFragment
 import org.alexcawl.forecaster.core.ui.utils.lazyViewModel
 import org.alexcawl.forecaster.core.ui.utils.viewBinding
+import org.alexcawl.forecaster.feature.settings.R
 import org.alexcawl.forecaster.feature.settings.databinding.FragmentSettingsScreenBinding
 import org.alexcawl.forecaster.feature.settings.di.FeatureSettingsComponentHolder
+import org.alexcawl.forecaster.feature.settings.ui.adapter.MarginItemDecoration
 import org.alexcawl.forecaster.feature.settings.ui.adapter.SensorItemAdapter
 import org.alexcawl.forecaster.feature.settings.ui.adapter.SettingsItem
 import org.alexcawl.forecaster.feature.settings.ui.adapter.SettingsItemCallback
@@ -38,6 +40,11 @@ class SettingsScreenFragment : BaseFragment<SettingsScreenState, SettingsScreenA
         savedInstanceState: Bundle?
     ): View {
         val content = FragmentSettingsScreenBinding.inflate(inflater, container, false)
+        with(content.recyclerView) {
+            adapter = listAdapter
+            layoutManager = LinearLayoutManager(context)
+            addItemDecoration(MarginItemDecoration(margin = R.dimen.settings_item_list_margin))
+        }
         return content.root
     }
 
@@ -63,17 +70,15 @@ class SettingsScreenFragment : BaseFragment<SettingsScreenState, SettingsScreenA
             }
             with(binding.recyclerView) {
                 visibility = View.VISIBLE
-                layoutManager = LinearLayoutManager(this.context)
-                adapter = listAdapter
+                listAdapter.submitList(
+                    buildList {
+                        add(SettingsItem.TitleItem(context.getString(R.string.theme)))
+                        add(SettingsItem.ThemeItem(state.theme))
+                        add(SettingsItem.TitleItem(context.getString(R.string.sensors)))
+                        addAll(state.availableSensors.map(SettingsItem::SensorItem))
+                    }
+                )
             }
-            listAdapter.submitList(
-                buildList {
-                    add(SettingsItem.TitleItem("Sensors"))
-                    addAll(state.availableSensors.map(SettingsItem::SensorItem))
-                    add(SettingsItem.TitleItem("Theme"))
-                    add(SettingsItem.ThemeItem(state.theme))
-                }
-            )
         }
     }
 }

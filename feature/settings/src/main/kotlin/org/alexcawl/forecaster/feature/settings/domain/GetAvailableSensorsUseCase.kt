@@ -16,6 +16,7 @@ class GetAvailableSensorsUseCase @Inject constructor(
                     SensorInfo(
                         name = sensor.name,
                         vendor = sensor.vendor,
+                        type = sensor.stringType,
                         version = sensor.version
                     )
                 }

@@ -4,9 +4,7 @@ import androidx.recyclerview.widget.DiffUtil
 
 class SettingsItemCallback : DiffUtil.ItemCallback<SettingsItem>() {
     override fun areItemsTheSame(oldItem: SettingsItem, newItem: SettingsItem): Boolean {
-        val result = oldItem::class == newItem::class && oldItem.hashCode() == newItem.hashCode()
-        println("Diff: [$result] $oldItem | $newItem")
-        return result
+        return oldItem::class == newItem::class
     }
 
     override fun areContentsTheSame(oldItem: SettingsItem, newItem: SettingsItem): Boolean {

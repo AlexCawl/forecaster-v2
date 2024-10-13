@@ -7,6 +7,7 @@ import org.alexcawl.forecaster.core.ui.delegate.ItemDelegateAdapter
 import org.alexcawl.forecaster.core.ui.delegate.ItemDelegateViewHolder
 import org.alexcawl.forecaster.feature.settings.R
 import org.alexcawl.forecaster.feature.settings.databinding.ItemSensorBinding
+import java.util.Locale
 
 class SensorItemAdapter : ItemDelegateAdapter<SettingsItem.SensorItem, SensorItemAdapter.SensorItemViewHolder>(
     modelClass = SettingsItem.SensorItem::class.java
@@ -17,8 +18,23 @@ class SensorItemAdapter : ItemDelegateAdapter<SettingsItem.SensorItem, SensorIte
         binding = binding
     ) {
         override fun onBind(item: SettingsItem.SensorItem) {
-            binding.textView.text = "${item.sensorInfo.name} from ${item.sensorInfo.vendor} | ${item.sensorInfo.version}"
-            binding.imageView.setImageResource(R.drawable.round_sensors_24)
+            binding.textView.text = item.sensorInfo.name
+            with(binding.cardView1Content) {
+                textViewTitle.setText(R.string.type)
+                textViewBody.text = item.sensorInfo.type
+            }
+            with(binding.cardView2Content) {
+                textViewTitle.setText(R.string.vendor)
+                textViewBody.text = item.sensorInfo.vendor
+            }
+            with(binding.cardView3Content) {
+                textViewTitle.setText(R.string.version)
+                textViewBody.text = String.format(
+                    locale = Locale.getDefault(),
+                    format = "%d",
+                    item.sensorInfo.version
+                )
+            }
         }
     }
 
