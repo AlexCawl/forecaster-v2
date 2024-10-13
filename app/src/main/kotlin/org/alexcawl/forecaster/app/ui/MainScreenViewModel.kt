@@ -1,13 +1,14 @@
-package org.alexcawl.forecaster
+package org.alexcawl.forecaster.app.ui
 
 import androidx.lifecycle.viewModelScope
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.alexcawl.forecaster.core.ui.mvi.BaseViewModel
 import org.alexcawl.forecaster.core.ui.mvi.ViewModelConfiguration
-import javax.inject.Inject
 
-class MainScreenViewModel @Inject constructor(
+class MainScreenViewModel @AssistedInject constructor(
     configuration: ViewModelConfiguration
 ) : BaseViewModel<MainScreenState, MainScreenAction>(
     configuration = configuration,
@@ -40,5 +41,10 @@ class MainScreenViewModel @Inject constructor(
                 MainScreenState.WeatherScreenDisplayed
             }
         }
+    }
+
+    @AssistedFactory
+    interface Factory {
+        fun create(): MainScreenViewModel
     }
 }

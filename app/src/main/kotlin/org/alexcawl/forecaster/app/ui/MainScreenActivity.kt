@@ -1,9 +1,10 @@
-package org.alexcawl.forecaster
+package org.alexcawl.forecaster.app.ui
 
 import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import org.alexcawl.forecaster.app.ForecasterApplication
 import org.alexcawl.forecaster.app.R
 import org.alexcawl.forecaster.app.databinding.ActivityMainBinding
 import org.alexcawl.forecaster.core.ui.mvi.BaseActivity
@@ -14,7 +15,7 @@ import org.alexcawl.forecaster.feature.settings.ui.SettingsScreenFragment
 
 class MainScreenActivity : BaseActivity<MainScreenState, MainScreenAction, ActivityMainBinding>() {
     override val viewModel: MainScreenViewModel by lazyViewModel<MainScreenViewModel> {
-        MainScreenViewModel(configuration = BaseViewModelConfiguration())
+        (application as ForecasterApplication).component.mainScreenViewModelFactory.create()
     }
 
     override val binding: ActivityMainBinding by viewBinding {

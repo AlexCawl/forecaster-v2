@@ -9,8 +9,9 @@ import kotlinx.coroutines.flow.map
 import org.alexcawl.forecaster.core.persistence.core.BaseRepository
 import org.alexcawl.forecaster.core.common.BilateralMapper
 import org.alexcawl.forecaster.core.persistence.entity.Theme
+import javax.inject.Inject
 
-class ThemeRepository(
+class ThemeRepository @Inject constructor(
     private val dataStore: DataStore<Preferences>
 ) : BaseRepository<Theme>, BilateralMapper<String, Theme> {
     override val data: Flow<Theme> = dataStore.data

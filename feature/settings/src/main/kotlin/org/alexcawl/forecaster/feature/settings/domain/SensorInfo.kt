@@ -1,4 +1,4 @@
-package org.alexcawl.forecaster.core.persistence.entity
+package org.alexcawl.forecaster.feature.settings.domain
 
 data class SensorInfo(
     val name: String,

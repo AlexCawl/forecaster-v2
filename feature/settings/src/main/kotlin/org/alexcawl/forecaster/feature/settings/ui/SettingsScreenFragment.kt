@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.alexcawl.forecaster.core.ui.delegate.BaseDelegateAdapter
 import org.alexcawl.forecaster.core.ui.mvi.BaseFragment
-import org.alexcawl.forecaster.core.ui.utils.BaseViewModelConfiguration
 import org.alexcawl.forecaster.core.ui.utils.lazyViewModel
 import org.alexcawl.forecaster.core.ui.utils.viewBinding
 import org.alexcawl.forecaster.feature.settings.databinding.FragmentSettingsScreenBinding
+import org.alexcawl.forecaster.feature.settings.di.FeatureSettingsComponentHolder
 import org.alexcawl.forecaster.feature.settings.ui.adapter.SensorItemAdapter
 import org.alexcawl.forecaster.feature.settings.ui.adapter.SettingsItem
 import org.alexcawl.forecaster.feature.settings.ui.adapter.SettingsItemCallback
@@ -19,7 +19,7 @@ import org.alexcawl.forecaster.feature.settings.ui.adapter.TitleItemAdapter
 
 class SettingsScreenFragment : BaseFragment<SettingsScreenState, SettingsScreenAction, FragmentSettingsScreenBinding>() {
     override val viewModel: SettingsScreenViewModel by lazyViewModel {
-        SettingsScreenViewModel(configuration = BaseViewModelConfiguration())
+        FeatureSettingsComponentHolder.component.settingsScreenViewModelFactory.create()
     }
 
     override val binding: FragmentSettingsScreenBinding by viewBinding(FragmentSettingsScreenBinding::bind)

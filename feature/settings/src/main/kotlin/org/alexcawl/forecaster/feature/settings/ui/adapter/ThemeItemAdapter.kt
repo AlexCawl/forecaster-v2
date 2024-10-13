@@ -27,6 +27,7 @@ class ThemeItemAdapter(
                 setOnClickListener {
                     onThemeSelected(Theme.Day)
                 }
+                isChecked = (item.theme == Theme.Day)
             }
             with(binding.systemButton) {
                 setIconResource(R.drawable.round_phone_android_24)
@@ -34,6 +35,7 @@ class ThemeItemAdapter(
                 setOnClickListener {
                     onThemeSelected(Theme.System)
                 }
+                isChecked = (item.theme == Theme.System)
             }
             with(binding.nightButton) {
                 setIconResource(R.drawable.round_mode_night_24)
@@ -41,6 +43,7 @@ class ThemeItemAdapter(
                 setOnClickListener {
                     onThemeSelected(Theme.Night)
                 }
+                isChecked = (item.theme == Theme.Night)
             }
         }
     }

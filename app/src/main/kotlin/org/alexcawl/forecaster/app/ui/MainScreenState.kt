@@ -1,4 +1,4 @@
-package org.alexcawl.forecaster
+package org.alexcawl.forecaster.app.ui
 
 sealed interface MainScreenState {
     data object SplashScreenDisplayed : MainScreenState
